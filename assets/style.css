@@ -1,0 +1,131 @@
+:root {
+    --text-color: #DBE4EF;
+    --card-front-color: #144480; 
+    --card-back-color: #144480; 
+    --border-color: #00F4BF; 
+}
+
+body {
+    background: url('../img/bg-desktop.webp');
+    font-family: "Bai Jamjuree";
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4rem;
+    gap: 3rem;
+}
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden;
+}
+
+.cartao {
+    background-color: transparent;
+    height: 20rem;
+    perspective: 1000px;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6rem);
+    cursor: pointer;
+}
+
+.cartao__conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    border-radius: 0.5rem;
+}
+
+.cartao.active .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+/* Frente do cartão */
+.cartao__conteudo__pergunta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-front-color);
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cartao__conteudo h3 {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    text-align: left;
+    padding: 0.5rem;
+    position: absolute;
+    margin: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1vw;
+    backface-visibility: hidden;
+}
+
+
+.cartao__conteudo__pergunta p {
+    margin-top: 4rem;
+    font-size: 1.4vw;
+    text-align: center;
+}
+
+.cartao__conteudo__resposta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-back-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color); 
+    border-radius: 0.5rem;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 1.4vw;
+    text-align: center;
+    padding: 2rem;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 2rem;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 560px) {
+    body {
+        background: url('../img/bg-mobile.webp');
+    }
+
+    .cartao {
+        flex: 1 0 calc(100% - 1rem);
+    }
+
+    .cartao__conteudo h3 {
+        font-size: 3vw;
+    }
+
+    .cartao__conteudo p {
+        font-size: 3.8vw;
+    }
+}
